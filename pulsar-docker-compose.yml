@@ -1,0 +1,22 @@
+#version: '3.5'
+services:
+  # Start zookeeper
+    pulsar:
+        image: apachepulsar/pulsar:4.0.1
+        container_name: pulsar_c35
+        ports:
+        - "8080:8080"
+        - "6650:6650"
+        environment:
+            PULSAR_STANDALONE_USE_ZOOKEEPER: "1"
+            PULSAR_MEM: " -Xms256m -Xmx256m -XX:MaxDirectMemorySize=512m"
+
+        volumes:
+            - pulsardata:/pulsar/data
+            - pulsarconf:/pulsar/conf
+        command: bash -c "bin/apply-config-from-env.py conf/standalone.conf && bin/pulsar standalone"
+
+volumes:
+    pulsardata:
+    pulsarconf:
+
