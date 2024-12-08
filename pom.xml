@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>23</java.version>
+		<pulsar.version>4.0.1</pulsar.version>
 	</properties>
 	<dependencies>
 		<dependency>
